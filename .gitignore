@@ -1,7 +1,8 @@
 /.idea/
 /.gradle/
 /gradle/
-/node_modules/
+/frontend/node_modules/
+/frontend/dist/
 /build/
 /npm-debug.log
 *.log
