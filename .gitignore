@@ -1,0 +1,10 @@
+/.idea/
+/.gradle/
+/gradle/
+/node_modules/
+/build/
+/npm-debug.log
+*.log
+*.ipr
+*.iml
+*.iws
