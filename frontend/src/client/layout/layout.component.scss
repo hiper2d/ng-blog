@@ -1,6 +1,6 @@
 $header-heigh: 70px;
-$global-side-padding: 50px;
-$global-side-width: 80%;
+$global-side-padding: 5%;
+$global-width: 100%;
 
 .h2d-header {
   background: #8bffdf;
@@ -25,10 +25,16 @@ $global-side-width: 80%;
 
 .h2d-content {
   margin: 0 auto;
-  padding: $header-heigh $global-side-padding 0;
-  width: $global-side-width;
+  box-sizing: border-box;
+  padding-top: $header-heigh;
+  width: $global-width;
 }
 
 .h2d-menu-active {
   color: red;
+}
+
+.h2d-blog {
+  display: flex;
+  flex-flow: row wrap; /* flex-direction: row; flex-wrap: wrap; */
 }

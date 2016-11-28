@@ -1,21 +1,14 @@
-.h2d-blog {
-}
-
 .h2d-record {
-  padding: 50px;
+  padding: 5%;
+  flex-basis: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  border-bottom: 1px solid #ccc;
 }
 
-.h2d-record-content {
-}
-
-.h2d-record-counter {
-}
-
-.h2d-record-date {
-}
-
-.h2d-record-footer {
-}
-
-.h2d-record-title {
+@media all and (min-width: 1000px) {
+  .h2d-record {
+    flex-basis: 50%;
+    max-width: 50%;
+  }
 }

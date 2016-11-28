@@ -1,10 +1,7 @@
-<div class="h2d-record" [style.background-color]="record.color">
-  <h1 class="h2d-record-title">{{record.title}}</h1>
+<p class="h2d-record-date">10/25/16</p>
 
-  <p class="h2d-record-content">{{record.content}}</p>
+<h1 class="h2d-record-title">{{record.title}}</h1>
 
-  <div class="h2d-record-footer">
-    <p class="h2d-record-date"></p>
-    <p class="h2d-record-counter"></p>
-  </div>
-</div>
+<p class="h2d-record-content">{{record.content}}</p>
+
+<button class="h2d-button" (click)="openRecord()" >Read</button>

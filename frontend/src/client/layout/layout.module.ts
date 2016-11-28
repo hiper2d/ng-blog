@@ -1,30 +1,25 @@
 import {BrowserModule} from "@angular/platform-browser";
 import {NgModule} from "@angular/core";
-import {RouterModule} from "@angular/router";
-import {layoutRoutes} from "./layout.router";
-import {BlogComponent} from "./content/blog/blog.component";
-import {AboutComponent} from "./content/about/about.component";
-import {LayoutConponent} from "./layout.component";
-import {BlogService} from "../services/blog.service";
+import {LayoutRoutingModule} from "./layout-routing.module";
+import {LayoutComponent} from "./layout.component";
 import {HttpModule} from "@angular/http";
-import {RecordComponent} from "./content/blog/record/record.component";
+import {BlogModule} from "./content/blog/blog.module";
+import {AboutModule} from "./content/about/about.module";
+import {LayoutNgRxModule} from "./layout-ngrx.module";
 
 @NgModule({
 	imports: [
+		AboutModule,
+		BlogModule,
 		BrowserModule,
 		HttpModule,
-		RouterModule.forRoot(layoutRoutes),
+		LayoutNgRxModule,
+		LayoutRoutingModule
 	],
 	declarations: [
-		AboutComponent,
-		BlogComponent,
-		LayoutConponent,
-		RecordComponent
+		LayoutComponent
 	],
-	providers: [
-		BlogService
-	],
-	bootstrap: [LayoutConponent]
+	bootstrap: [LayoutComponent]
 })
 export class LayoutModule {
 	

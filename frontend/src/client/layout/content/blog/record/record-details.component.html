@@ -1,0 +1,8 @@
+<div *ngIf="selectedRecord">{{selectedRecord.title}}</div>
+<div *ngFor="let comment of comments | async">
+  <p>{{comment.text}}</p>
+</div>
+<div>
+  <textarea name="newCommentText" [(ngModel)]="newCommentText"></textarea>
+  <button (click)="addComment()">Add comment</button>
+</div>

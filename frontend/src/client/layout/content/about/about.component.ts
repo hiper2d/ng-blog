@@ -1,7 +1,7 @@
 import {Component} from "@angular/core";
 
 @Component({
-	selector: 'h2d-about',
+	selector: 'div.h2d-about',
 	templateUrl: './about.component.html',
 	styleUrls: ['./about.component.scss']
 })

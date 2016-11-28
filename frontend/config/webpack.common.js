@@ -2,7 +2,6 @@ var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var helpers = require('./helpers');
-var path = require('path');
 
 module.exports = {
     devtool: 'source-map',
@@ -14,7 +13,6 @@ module.exports = {
     },
 
     resolve: {
-        root: path.resolve('./src/client'),
         extensions: ['', '.js', '.ts']
     },
 
@@ -34,16 +32,18 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                exclude: helpers.root('src/public', 'assets/css'),
+                exclude: [ helpers.root('src',' public'), helpers.root('node_modules') ],
                 loader: ExtractTextPlugin.extract('style!css', 'css?sourceMap')
             },
             {
                 test: /\.css$/,
-                include: helpers.root('src/public', 'assets/css'),
-                loader: 'raw'
+                include: helpers.root('src',' public', 'assets', 'css'),
+                exclude: helpers.root('node_modules'),
+                loader: 'raw-loader'
             },
             {
-                test: /\.scss/,
+                test: /\.scss$/,
+                exclude: helpers.root('node_modules'),
                 loaders: ['raw-loader', 'sass-loader']
             }
         ]
