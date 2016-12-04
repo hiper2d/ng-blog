@@ -2,9 +2,9 @@ import {Injectable} from "@angular/core";
 import {Http} from "@angular/http";
 import {Observable} from 'rxjs';
 import {Record} from "../model/record.model";
-import {RecordStore} from "../stores/record.store";
+import {AppStore} from "../store/app.store";
 import {Store} from "@ngrx/store";
-import {RecordAction} from "../stores/reduces/record.action";
+import {RecordAction} from "../store/reduces/record.action";
 
 @Injectable()
 export class BlogService {
@@ -12,7 +12,7 @@ export class BlogService {
 	private JSON_SERVER = "http://localhost:3002";
 	private SPRING_SERVER: "http://localhost:9001/api/blog";
 	
-	constructor(private _http: Http, private _store: Store<RecordStore>) {
+	constructor(private _http: Http, private _store: Store<AppStore>) {
 		this.records = _store.select<Array<Record>>('records');
 	}
 	

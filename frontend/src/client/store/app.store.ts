@@ -1,5 +1,5 @@
 import {RecordComment} from "../model/comment.model";
 
-export interface RecordStore {
+export interface AppStore {
 	recordComments: RecordComment[]
 }

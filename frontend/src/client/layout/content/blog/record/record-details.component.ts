@@ -6,7 +6,7 @@ import {CommentService} from "../../../../services/comment.service";
 import {Observable} from "rxjs";
 import {RecordComment} from "../../../../model/comment.model";
 import {Store} from "@ngrx/store";
-import {RecordStore} from "../../../../stores/record.store";
+import {AppStore} from "../../../../store/app.store";
 
 @Component({
 	selector: 'div.h2d-record-details',
@@ -19,11 +19,10 @@ export class RecordDetailsComponent implements OnInit {
 	newCommentText: string;
 	
 	constructor(
-		private _router: Router,
 		private _activatedRoute: ActivatedRoute,
 		private _blogService: BlogService,
 	  private _commentService: CommentService,
-		private _store: Store<RecordStore>
+		private _store: Store<AppStore>
 	) {
 		this.comments = _store.select<Array<RecordComment>>('recordComments');
 		//this._comments.subscribe(a => {});

@@ -1,9 +1,8 @@
 import {Component, OnInit} from "@angular/core";
 import {BlogService} from "../../../services/blog.service";
 import {Record} from "../../../model/record.model";
-import {Router} from "@angular/router";
 import {Observable} from "rxjs";
-import {RecordStore} from "../../../stores/record.store";
+import {AppStore} from "../../../store/app.store";
 import {Store} from "@ngrx/store";
 
 @Component({
@@ -16,7 +15,7 @@ export class BlogComponent implements OnInit {
 	
 	constructor(
 		private _blogService: BlogService,
-		private _store: Store<RecordStore>
+		private _store: Store<AppStore>
 	) {
 		this.records = _store.select<Array<Record>>('records');
 	}

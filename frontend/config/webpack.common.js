@@ -27,24 +27,23 @@ module.exports = {
                 loader: 'html'
             },
             {
-                test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
+                test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot)$/,
                 loader: 'file?name=assets/[name].[hash].[ext]'
             },
             {
-                test: /\.css$/,
-                exclude: [ helpers.root('src',' public'), helpers.root('node_modules') ],
-                loader: ExtractTextPlugin.extract('style!css', 'css?sourceMap')
-            },
-            {
-                test: /\.css$/,
-                include: helpers.root('src',' public', 'assets', 'css'),
-                exclude: helpers.root('node_modules'),
-                loader: 'raw-loader'
-            },
-            {
                 test: /\.scss$/,
-                exclude: helpers.root('node_modules'),
+                include: helpers.root('src', 'client'),
                 loaders: ['raw-loader', 'sass-loader']
+            },
+            {
+                test: /\.css$/,
+                include: helpers.root('src', 'public'),
+                loader: 'raw'
+            },
+            {
+                test: /\.css$/,
+                include: helpers.root('src', 'public'),
+                loader: ExtractTextPlugin.extract('style!css', 'css?sourceMap')
             }
         ]
     },

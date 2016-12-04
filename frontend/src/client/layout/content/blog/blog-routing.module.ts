@@ -5,7 +5,7 @@ import {RecordDetailsComponent} from "./record/record-details.component";
 
 const blogRoutes: Routes = [
 	{path: 'blog', component: BlogComponent},
-	{path: 'selectedRecord/:id', component: RecordDetailsComponent}
+	{path: 'record/:id', component: RecordDetailsComponent}
 ]
 
 @NgModule({

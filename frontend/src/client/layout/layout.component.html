@@ -7,6 +7,7 @@
     <nav>
       <a routerLink="/blog" routerLinkActive="h2d-menu-active">Blog</a>
       <a routerLink="/about" routerLinkActive="h2d-menu-active">About</a>
+      <a *ngIf="authService.isLoggedIn" routerLink="/new" routerLinkActive="h2d-menu-active">New</a>
     </nav>
   </div>
 </header>

@@ -2,14 +2,14 @@ import {Injectable} from "@angular/core";
 import {Observable} from "rxjs";
 import {Store} from "@ngrx/store";
 import {RecordComment} from "../model/comment.model";
-import {RecordStore} from "../stores/record.store";
-import {CommentAction} from "../stores/reduces/comment.actions";
+import {AppStore} from "../store/app.store";
+import {CommentAction} from "../store/reduces/comment.actions";
 
 @Injectable()
 export class CommentService {
 	comments: Observable<Array<RecordComment>>;
 	
-	constructor(private _store: Store<RecordStore>) {
+	constructor(private _store: Store<AppStore>) {
 		this.comments = _store.select<Array<RecordComment>>('recordComments');
 	}
 	
