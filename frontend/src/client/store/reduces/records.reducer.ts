@@ -1,6 +1,6 @@
 import {Record} from "../../model/record.model";
 import {Action} from "@ngrx/store";
-import {RecordsActions} from "../actions/record.actions";
+import {RecordsActions} from "../actions/records.actions";
 
 export type RecordsState = Array<Record>;
 

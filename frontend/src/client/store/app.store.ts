@@ -10,15 +10,10 @@ export interface AppStore {
 	recordComments: RecordCommentsState
 }
 
-const rootReducer = combineReducers({
+export default compose(combineReducers) ({ // does it make sense?
 	records: recordsReducer,
 	recordDetail: recordDetailReducer,
 	recordComments: recordCommentsReducer
 });
-
-// Read about compose: http://redux.js.org/docs/api/compose.html, https://github.com/ngrx/ngrx.github.io/blob/master/store/recipes/reducers/reducer_composition.md
-export default compose(combineReducers) ({
-	records: recordsReducer,
-	recordDetail: recordDetailReducer,
-	recordComments: recordCommentsReducer
-}); // does it make sense?
+// Read about compose: http://redux.js.org/docs/api/compose.html
+// this is also useful: https://github.com/ngrx/ngrx.github.io/blob/master/store/recipes/reducers/reducer_composition.md

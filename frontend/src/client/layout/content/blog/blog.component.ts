@@ -1,10 +1,8 @@
 import {Component, OnInit} from "@angular/core";
-import {BlogService} from "../../../services/blog.service";
-import {Record} from "../../../model/record.model";
 import {Observable} from "rxjs";
 import {AppStore} from "../../../store/app.store";
 import {Store} from "@ngrx/store";
-import {RecordsActions} from "../../../store/actions/record.actions";
+import {RecordsActions} from "../../../store/actions/records.actions";
 import {RecordsState} from "../../../store/reduces/records.reducer";
 
 @Component({
@@ -17,13 +15,13 @@ export class BlogComponent implements OnInit {
 	
 	constructor(
 		private _store: Store<AppStore>,
-	  private _recordsActions: RecordsActions
+	  	private _recordsActions: RecordsActions
 	) {
 		this.records = _store.select<RecordsState>('records');
 	}
 	
 	ngOnInit(): void {
-		//this._store.dispatch(this._recordsActions.loadRecords());
+		this._store.dispatch(this._recordsActions.loadRecords());
 	}
 	
 	createRecord() {

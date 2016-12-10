@@ -7,7 +7,7 @@ import {Store} from "@ngrx/store";
 import {RecordAction} from "../store/reduces/record.action";
 import {RecordsState} from "../store/reduces/records.reducer";
 import {RecordDetailsActions} from "../store/actions/record-details.action";
-import {RecordsActions} from "../store/actions/record.actions";
+import {RecordsActions} from "../store/actions/records.actions";
 
 @Injectable()
 export class BlogService {

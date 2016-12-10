@@ -1,6 +1,6 @@
 import {Effect, Actions} from "@ngrx/effects";
 import {Injectable} from "@angular/core";
-import {RecordsActions} from "../actions/record.actions";
+import {RecordsActions} from "../actions/records.actions";
 import {BlogService} from "../../services/blog.service";
 import {RecordDetailsActions} from "../actions/record-details.action";
 
@@ -22,7 +22,7 @@ export class RecordsEffect {
 		.map(records => this._recordsActions.loadRecordsSuccess(records));
 	
 	@Effect()
-	getrecordDetail$ = this.update$
+	getRecordDetail$ = this.update$
 		.ofType(RecordsActions.ADD_RECORD)
 		.map<string>(action => action.payload)
 		.switchMap(id => this._blogService.getRecord(id))
