@@ -1,20 +1,19 @@
-import {RecordAction} from "./record.action";
 import {Record} from "../../model/record.model";
+import {Action} from "@ngrx/store";
+import {RecordsActions} from "../actions/record.actions";
 
-export const records = (state: any = [], {type, payload}) => {
-	switch (type) {
-		case RecordAction[RecordAction.ADD_RECORDS]:
-			return payload;
-		case RecordAction[RecordAction.CREATE_RECORD]:
-			return [...state, payload];
-		case RecordAction[RecordAction.UPDATE_RECORD]:
-			return state.map((item:Record) => {
-				return item.id === payload.id ? Object.assign({}, item, payload) : item;
-			});
-		case RecordAction[RecordAction.DELETE_RECORD]:
-			return state.filter((item:Record) => {
-				return item.id !== payload.id;
-			});
+export type RecordsState = Array<Record>;
+
+const initState: RecordsState = [];
+
+export default function (state: RecordsState = initState, action: Action) {
+	switch (action.type) {
+		case RecordsActions.LOAD_RECORDS_SUCCESS: {
+			return action.payload;
+		}
+		case RecordsActions.ADD_RECORD_SUCCESS: {
+			return [...state, action.payload];;
+		}
 		default:
 			return state;
 	}

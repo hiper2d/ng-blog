@@ -5,20 +5,26 @@ import {Record} from "../model/record.model";
 import {AppStore} from "../store/app.store";
 import {Store} from "@ngrx/store";
 import {RecordAction} from "../store/reduces/record.action";
+import {RecordsState} from "../store/reduces/records.reducer";
+import {RecordDetailsActions} from "../store/actions/record-details.action";
+import {RecordsActions} from "../store/actions/record.actions";
 
 @Injectable()
 export class BlogService {
-	records: Observable<Array<Record>>;
-	private JSON_SERVER = "http://localhost:3002";
-	private SPRING_SERVER: "http://localhost:9001/api/blog";
+	records: Observable<RecordsState>;
+	static JSON_SERVER = "http://localhost:3002";
+	static SPRING_SERVER: "http://localhost:9001/api/blog";
 	
-	constructor(private _http: Http, private _store: Store<AppStore>) {
-		this.records = _store.select<Array<Record>>('records');
+	constructor(
+		private _http: Http,
+		private _store: Store<AppStore>,
+	  private _recordsActions: RecordsActions
+	) {
+		this.records = _store.select<RecordsState>('records');
 	}
 	
-	loadRecords() {
-		this.records = this._http.get("http://localhost:3002/blog").map(res => <Array<Record>> res.json());
-		this.records.subscribe(records => this._store.dispatch({type: RecordAction[RecordAction.ADD_RECORDS], payload: records}));
+	loadRecords(): Observable<RecordsState> {
+		return this._http.get(BlogService.JSON_SERVER + "/blog").map(res => <Array<Record>> res.json());
 	}
 	
 	getRecord(id: string): Observable<Record> {
@@ -30,11 +36,11 @@ export class BlogService {
 	}
 	
 	private updateRecord(record: Record) {
-		this._store.dispatch({type: RecordAction[RecordAction.UPDATE_RECORD], payload: record});
+		//this._store.dispatch({type: RecordAction[RecordAction.UPDATE_RECORD], payload: record});
 	}
 	
 	private createRecord(record: Record) {
-		this._store.dispatch({type: RecordAction[RecordAction.CREATE_RECORD], payload: this.addUUID(record)});
+		this._store.dispatch(this._recordsActions.addRecord(this.addUUID(record)));
 	}
 	
 	private addUUID(record: Record): Record {

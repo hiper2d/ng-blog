@@ -2,12 +2,17 @@ import {NgModule} from "@angular/core";
 import {StoreModule} from "@ngrx/store";
 import {StoreDevtoolsModule} from "@ngrx/store-devtools";
 import {StoreLogMonitorModule, useLogMonitor} from "@ngrx/store-log-monitor";
-import {records} from "../store/reduces/records.reducer";
-import {recordComments} from "../store/reduces/record-comments.reducer";
+import appStore from "../store/app.store";
+import {RecordsActions} from "../store/actions/record.actions";
+import {RecordDetailsActions} from "../store/actions/record-details.action";
+import {CommentsActions} from "../store/actions/comments.actions";
+import {RecordsEffect} from "../store/effects/records.effect";
+import {EffectsModule} from "@ngrx/effects";
 
 @NgModule({
 	imports: [
-		StoreModule.provideStore({records, recordComments}),
+		EffectsModule.run(RecordsEffect),
+		StoreModule.provideStore(appStore),
 		StoreDevtoolsModule.instrumentStore({
 			monitor: useLogMonitor({
 				visible: true,
@@ -20,6 +25,11 @@ import {recordComments} from "../store/reduces/record-comments.reducer";
 		StoreModule,
 		StoreDevtoolsModule,
 		StoreLogMonitorModule
+	],
+	providers: [
+		RecordsActions,
+		RecordDetailsActions,
+		CommentsActions
 	]
 })
 export class LayoutNgRxModule {

@@ -17,6 +17,6 @@ export class RecordComponent {
 	}
 	
 	openRecord() {
-		this._router.navigate(['/selectedRecord', this.record.id])
+		this._router.navigate(['/record', this.record.id])
 	}
 }

@@ -3,13 +3,16 @@ import {Observable} from "rxjs";
 import {Store} from "@ngrx/store";
 import {RecordComment} from "../model/comment.model";
 import {AppStore} from "../store/app.store";
-import {CommentAction} from "../store/reduces/comment.actions";
+import {CommentsActions} from "../store/actions/comments.actions";
 
 @Injectable()
 export class CommentService {
 	comments: Observable<Array<RecordComment>>;
 	
-	constructor(private _store: Store<AppStore>) {
+	constructor(
+		private _store: Store<AppStore>,
+	  private _commentsActions: CommentsActions
+	) {
 		this.comments = _store.select<Array<RecordComment>>('recordComments');
 	}
 	
@@ -23,15 +26,15 @@ export class CommentService {
 	}
 	
 	deleteComment(comment: RecordComment) {
-		this._store.dispatch({type: CommentAction[CommentAction.DELETE_COMMENT], payload: comment});
+		//this._store.dispatch({type: CommentAction[CommentAction.DELETE_COMMENT], payload: comment});
 	}
 	
 	private updateComment(comment: RecordComment) {
-		this._store.dispatch({type: CommentAction[CommentAction.UPDATE_COMMENT], payload: comment});
+		//this._store.dispatch({type: CommentAction[CommentAction.UPDATE_COMMENT], payload: comment});
 	}
 	
 	private createComment(comment: RecordComment) {
-		this._store.dispatch({type: CommentAction[CommentAction.CREATE_COMMENT], payload: this.addUUID(comment)});
+		this._store.dispatch(this._commentsActions.saveComment(this.addUUID(comment)));
 	}
 	
 	private addUUID(comment: RecordComment): RecordComment {
