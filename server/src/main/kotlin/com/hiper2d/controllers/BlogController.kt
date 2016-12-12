@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMethod
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-@CrossOrigin(origins = arrayOf("http://localhost:3001"))
 @RequestMapping("/api/blog")
+@CrossOrigin(origins = arrayOf("http://localhost:3001"))
 class BlogController @Autowired constructor(val blogService: BlogService) {
     @RequestMapping(method = arrayOf(RequestMethod.GET))
     fun findAll() = blogService.findAllBlogPosts()
