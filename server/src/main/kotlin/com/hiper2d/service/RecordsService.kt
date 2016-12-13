@@ -6,4 +6,5 @@ import com.hiper2d.model.RecordDetails
 interface RecordsService {
     fun getAllRecords() : List<Record>
     fun getRecordDetail(recordId: String) : RecordDetails
+    fun saveRecord(record: Record)
 }

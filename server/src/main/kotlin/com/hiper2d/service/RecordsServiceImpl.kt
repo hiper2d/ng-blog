@@ -13,12 +13,17 @@ class RecordsServiceImpl
 @Autowired constructor(
         val recordsRepository: RecordsRepository,
         val recordDetailsRepository: RecordDetailsRepository
-): RecordsService {
+) : RecordsService {
+
     override fun getAllRecords(): List<Record> {
         return recordsRepository.findAll()
     }
 
     override fun getRecordDetail(shortRecordId: String): RecordDetails {
         return recordDetailsRepository.findByShortRecordId(ObjectId(shortRecordId))
+    }
+
+    override fun saveRecord(record: Record) {
+        recordsRepository.saveRecord(record)
     }
 }

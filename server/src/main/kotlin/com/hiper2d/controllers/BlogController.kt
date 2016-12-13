@@ -1,5 +1,6 @@
 package com.hiper2d.controllers
 
+import com.hiper2d.model.Record
 import com.hiper2d.service.BlogService
 import com.hiper2d.service.RecordsService
 import org.springframework.beans.factory.annotation.Autowired
@@ -13,9 +14,12 @@ class BlogController
         val blogService: BlogService,
         val recordsService: RecordsService
 ) {
-    @RequestMapping(method = arrayOf(RequestMethod.GET), path = arrayOf("/all"))
+    @GetMapping
     fun findAll() = recordsService.getAllRecords()
 
-    @RequestMapping(method = arrayOf(RequestMethod.GET), path = arrayOf("/record"))
-    fun getRecordDetails(@RequestParam(value = "recordId") recordId: String) = recordsService.getRecordDetail(recordId)
+    @GetMapping("/{id}")
+    fun getRecordDetails(@RequestParam(value = "id") recordId: String) = recordsService.getRecordDetail(recordId)
+
+    @PostMapping
+    fun saveRecord(@RequestBody record: Record) = recordsService.saveRecord(record)
 }
