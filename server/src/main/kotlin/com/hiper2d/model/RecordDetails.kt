@@ -1,9 +1,12 @@
 package com.hiper2d.model
 
-import org.bson.types.ObjectId
+import org.springframework.data.annotation.Id
+import org.springframework.data.mongodb.core.index.Indexed
+import org.springframework.data.mongodb.core.mapping.Document
 
+@Document
 data class RecordDetails(
-        val id: ObjectId,
-        val shortRecordId: ObjectId,
-        val content: String
+        @Id val id: String,
+        val shortRecordId: String,
+        @Indexed val content: String
 )
