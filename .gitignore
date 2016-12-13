@@ -5,6 +5,8 @@
 /frontend/dist/
 /build/
 /npm-debug.log
+/server/build/
+/server/.gradle/
 *.log
 *.ipr
 *.iml
