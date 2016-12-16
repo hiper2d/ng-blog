@@ -7,8 +7,9 @@ import java.time.LocalDate
 
 @Document
 data class Record (
-        @Id val id: String,
+        @Id val id: String?,
         val title: String,
-        val description: String,
-        @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) val date: LocalDate
+        val content: String?,
+        val description: String?,
+        @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) val date: LocalDate?
 )
