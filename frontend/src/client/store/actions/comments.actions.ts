@@ -5,9 +5,10 @@ import {RecordComment} from "../../model/comment.model";
 @Injectable()
 export class CommentsActions {
 	static LOAD_COMMENTS = '[Comment] Load Comments';
-	loadComments(): Action {
+	loadComments(recordId: string): Action {
 		return {
-			type: CommentsActions.LOAD_COMMENTS
+			type: CommentsActions.LOAD_COMMENTS,
+			payload: recordId
 		}
 	}
 	
@@ -22,12 +23,13 @@ export class CommentsActions {
 	static ADD_COMMENT = '[Comment] Add Comment';
 	saveComment(comment: RecordComment): Action {
 		return {
-			type: CommentsActions.ADD_COMMENT
+			type: CommentsActions.ADD_COMMENT,
+			payload: comment
 		}
 	}
 	
 	static ADD_COMMENT_SUCCESS = '[Comment] Add Comment Success'
-	saveCommentSuccess(comment) {
+	saveCommentSuccess(comment): Action {
 		return {
 			type: CommentsActions.ADD_COMMENT_SUCCESS,
 			payload: comment

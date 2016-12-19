@@ -1,19 +1,17 @@
 import {Injectable} from "@angular/core";
-import {Http} from "@angular/http";
-import {Observable} from 'rxjs';
+import {Http, Response} from "@angular/http";
+import {Observable} from "rxjs";
 import {Record} from "../model/record.model";
 import {AppStore} from "../store/app.store";
 import {Store} from "@ngrx/store";
-import {RecordAction} from "../store/reduces/record.action";
 import {RecordsState} from "../store/reduces/records.reducer";
-import {RecordDetailsActions} from "../store/actions/record-details.action";
 import {RecordsActions} from "../store/actions/records.actions";
 
 @Injectable()
 export class BlogService {
 	records: Observable<RecordsState>;
 	static JSON_SERVER = "http://localhost:3002";
-	static SPRING_SERVER: "http://localhost:9001/api/blog";
+	static SPRING_SERVER = "http://localhost:9001/api";
 	
 	constructor(
 		private _http: Http,
@@ -24,7 +22,7 @@ export class BlogService {
 	}
 	
 	loadRecords(): Observable<RecordsState> {
-		return this._http.get(BlogService.JSON_SERVER + "/blog").map(res => <Array<Record>> res.json());
+		return this._http.get(BlogService.SPRING_SERVER + "/blog").do(res => console.log(res)).catch(this.handleError).map(res => <Array<Record>> res.json());
 	}
 	
 	getRecord(id: string): Observable<Record> {
@@ -53,4 +51,18 @@ export class BlogService {
 				return (0 | Math.random() * 16).toString(16);
 			});
 	};
+	
+	private handleError (error: Response | any) {
+		// In a real world app, we might use a remote logging infrastructure
+		let errMsg: string;
+		if (error instanceof Response) {
+			const body = error.json() || '';
+			const err = body.error || JSON.stringify(body);
+			errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
+		} else {
+			errMsg = error.message ? error.message : error.toString();
+		}
+		console.log(errMsg);
+		return Observable.throw(errMsg);
+	}
 }

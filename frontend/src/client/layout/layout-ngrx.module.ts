@@ -8,10 +8,12 @@ import {RecordDetailsActions} from "../store/actions/record-details.action";
 import {CommentsActions} from "../store/actions/comments.actions";
 import {RecordsEffect} from "../store/effects/records.effect";
 import {EffectsModule} from "@ngrx/effects";
+import {CommentsEffects} from "../store/effects/comments.effects";
 
 @NgModule({
 	imports: [
 		EffectsModule.run(RecordsEffect),
+		EffectsModule.run(CommentsEffects),
 		StoreDevtoolsModule.instrumentStore({
 			monitor: useLogMonitor({
 				visible: true,

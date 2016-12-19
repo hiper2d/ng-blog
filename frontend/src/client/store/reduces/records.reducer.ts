@@ -12,7 +12,7 @@ export default function (state: RecordsState = initState, action: Action) {
 			return action.payload;
 		}
 		case RecordsActions.ADD_RECORD_SUCCESS: {
-			return [...state, action.payload];;
+			return [...state, action.payload];
 		}
 		default:
 			return state;
