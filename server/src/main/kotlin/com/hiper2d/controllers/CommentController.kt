@@ -7,13 +7,11 @@ import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/api/comment")
-@CrossOrigin(origins = arrayOf("http://localhost:3001", "chrome-extension://cokgbflfommojglbmbpenpphppikmonn"))
+@CrossOrigin(origins = arrayOf("http://localhost:3001"))
 class CommentController
-@Autowired constructor(
-        val commentService: CommentService
-) {
-    @GetMapping
-    fun getCommentsForRecord(@RequestParam(value = "recordId") recordId: String) = commentService.getCommentsForRecord(recordId)
+@Autowired constructor(val commentService: CommentService) {
+    @GetMapping("/{recordId}")
+    fun getCommentsForRecord(@PathVariable(value = "recordId") recordId: String) = commentService.getCommentsForRecord(recordId)
 
     @PostMapping
     fun saveComment(@RequestBody comment: Comment) = commentService.saveComment(comment)

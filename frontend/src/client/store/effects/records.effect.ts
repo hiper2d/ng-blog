@@ -21,7 +21,7 @@ export class RecordsEffect {
 	
 	@Effect()
 	getRecordDetail = this._actions
-		.ofType(RecordsActions.ADD_RECORD)
+		.ofType(RecordDetailsActions.GET_RECORD_DETAILS)
 		.map<string>(action => action.payload)
 		.switchMap(id => this._blogService.getRecord(id))
 		.map(record => this._recordDetailActions.getRecordDetailSuccess(record));

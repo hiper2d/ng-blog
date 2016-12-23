@@ -5,9 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.mongodb.core.MongoTemplate
 
 class CommentRepositoryImpl
-@Autowired constructor(
-        val mongoTemplate: MongoTemplate
-) : CommentRepositoryCustom {
+@Autowired constructor(val mongoTemplate: MongoTemplate) : CommentRepositoryCustom {
     override fun saveComment(comment: Comment) {
         mongoTemplate.save(comment)
     }

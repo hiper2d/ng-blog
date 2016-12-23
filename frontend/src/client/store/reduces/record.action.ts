@@ -1,6 +1,0 @@
-export enum RecordAction {
-	ADD_RECORDS,
-	CREATE_RECORD,
-	DELETE_RECORD,
-	UPDATE_RECORD
-}
