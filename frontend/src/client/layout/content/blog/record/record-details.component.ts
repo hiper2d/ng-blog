@@ -23,8 +23,8 @@ export class RecordDetailsComponent implements OnInit {
 	constructor(
 		private _activatedRoute: ActivatedRoute,
 		private _store: Store<AppStore>,
-	  private _recordDetailActions: RecordDetailsActions,
-	  private _commentsActions: CommentsActions
+	  	private _recordDetailActions: RecordDetailsActions,
+	  	private _commentsActions: CommentsActions
 	) {
 		this.comments = _store.select<Array<RecordComment>>('recordComments');
 		this.selectedRecord = _store.select<Record>('recordDetails');

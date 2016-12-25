@@ -6,13 +6,13 @@ import recordDetailReducer, {RecordDetailState} from "./reduces/record-details.r
 
 export interface AppStore {
 	records: RecordsState,
-	recordDetail: RecordDetailState,
+	recordDetails: RecordDetailState,
 	recordComments: RecordCommentsState
 }
 
 export default compose(combineReducers) ({ // does it make sense?
 	records: recordsReducer,
-	recordDetail: recordDetailReducer,
+	recordDetails: recordDetailReducer,
 	recordComments: recordCommentsReducer
 });
 // Read about compose: http://redux.js.org/docs/api/compose.html
