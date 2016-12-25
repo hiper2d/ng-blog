@@ -14,6 +14,5 @@ class CommentController
     fun getCommentsForRecord(@PathVariable(value = "recordId") recordId: String) = commentService.getCommentsForRecord(recordId)
 
     @PostMapping
-    fun saveComment(@RequestBody comment: Comment) = commentService.saveComment(comment)
+    fun saveComment(@RequestBody comment: Comment): Comment = commentService.saveComment(comment)
 }
-

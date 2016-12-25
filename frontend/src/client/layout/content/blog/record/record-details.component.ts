@@ -17,9 +17,7 @@ export class RecordDetailsComponent implements OnInit {
 	selectedRecord: Observable<Record>;
 	comments: Observable<Array<RecordComment>>;
 	newCommentText: string;
-	
-	private _selectedRecordId: string;
-	
+
 	constructor(
 		private _activatedRoute: ActivatedRoute,
 		private _store: Store<AppStore>,
@@ -40,9 +38,10 @@ export class RecordDetailsComponent implements OnInit {
 	}
 	
 	addComment() {
-		this.selectedRecord.subscribe(rec => this._selectedRecordId = rec.id);
-		let newComment = new RecordComment(null, this._selectedRecordId, this.newCommentText, null);
-		console.log(newComment);
-		this._store.dispatch(this._commentsActions.saveComment(newComment));
+		this.selectedRecord.subscribe(rec => {
+			let newComment = new RecordComment(null, rec.id, this.newCommentText, null);
+			this._store.dispatch(this._commentsActions.addComment(newComment));
+		});
+		this.newCommentText = '';
 	}
 }

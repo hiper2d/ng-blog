@@ -3,7 +3,6 @@ import {Observable} from "rxjs";
 import {Store} from "@ngrx/store";
 import {RecordComment} from "../model/comment.model";
 import {AppStore} from "../store/app.store";
-import {CommentsActions} from "../store/actions/comments.actions";
 import {Http, Response} from "@angular/http";
 import {RecordCommentsState} from "../store/reduces/comments.reducer";
 
@@ -16,7 +15,6 @@ export class CommentService {
 	constructor(
 		private _http: Http,
 		private _store: Store<AppStore>,
-	  	private _commentsActions: CommentsActions
 	) {
 		this.comments = _store.select<Array<RecordComment>>('recordComments');
 	}

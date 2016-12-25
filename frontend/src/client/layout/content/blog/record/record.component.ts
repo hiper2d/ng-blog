@@ -21,7 +21,6 @@ export class RecordComponent {
 	
 	openRecord() {
 		let recordId = this.record.id;
-		this._store.dispatch(this._recordDetailsActions.getRecordDetail(recordId));
 		this._router.navigate(['/record', recordId]);
 	}
 }

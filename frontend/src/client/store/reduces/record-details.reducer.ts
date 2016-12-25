@@ -11,5 +11,7 @@ export default function(state: RecordDetailState = initState, action: Action) {
 		case RecordDetailsActions.GET_RECORD_DETAILS_SUCCESS: {
 			return action.payload;
 		}
+		default:
+			return state;
 	}
 }

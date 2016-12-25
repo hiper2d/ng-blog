@@ -17,5 +17,5 @@ class BlogController
     fun saveRecord(@RequestBody record: Record) = recordsService.saveRecord(record)
 
     @GetMapping("/{id}")
-    fun getRecord(@PathVariable(value = "id") id: String) = recordsService.getRecord(id)
+    fun getRecord(@PathVariable(value = "id") id: String): Record = recordsService.getRecord(id)
 }

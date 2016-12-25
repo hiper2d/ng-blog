@@ -6,7 +6,8 @@ import org.springframework.data.mongodb.core.MongoTemplate
 
 class CommentRepositoryImpl
 @Autowired constructor(val mongoTemplate: MongoTemplate) : CommentRepositoryCustom {
-    override fun saveComment(comment: Comment) {
+    override fun saveComment(comment: Comment): Comment {
         mongoTemplate.save(comment)
+        return comment
     }
 }

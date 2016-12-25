@@ -12,7 +12,7 @@ export default function (state = initState, action: Action): RecordCommentsState
 			return action.payload;
 		}
 		case CommentsActions.ADD_COMMENT_SUCCESS: {
-			return [state, ...action.payload];
+			return [...state, action.payload];
 		}
 		default: {
 			return state;

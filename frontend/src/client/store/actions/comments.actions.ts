@@ -21,7 +21,7 @@ export class CommentsActions {
 	}
 	
 	static ADD_COMMENT = '[Comment] Add Comment';
-	saveComment(comment: RecordComment): Action {
+	addComment(comment: RecordComment): Action {
 		return {
 			type: CommentsActions.ADD_COMMENT,
 			payload: comment
@@ -29,7 +29,7 @@ export class CommentsActions {
 	}
 	
 	static ADD_COMMENT_SUCCESS = '[Comment] Add Comment Success'
-	saveCommentSuccess(comment): Action {
+	addCommentSuccess(comment): Action {
 		return {
 			type: CommentsActions.ADD_COMMENT_SUCCESS,
 			payload: comment

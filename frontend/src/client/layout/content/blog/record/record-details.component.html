@@ -1,4 +1,4 @@
-<div *ngIf="selectedRecord | async">{{selectedRecord.title | async}}</div>
+<div *ngIf="selectedRecord | async">{{selectedRecord.title}}</div>
 <div *ngFor="let comment of comments | async">
   <p>{{comment.content}}</p>
 </div>
