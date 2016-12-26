@@ -29,7 +29,7 @@ export class CommentsActions {
 	}
 	
 	static ADD_COMMENT_SUCCESS = '[Comment] Add Comment Success'
-	addCommentSuccess(comment): Action {
+	addCommentSuccess(comment: RecordComment): Action {
 		return {
 			type: CommentsActions.ADD_COMMENT_SUCCESS,
 			payload: comment

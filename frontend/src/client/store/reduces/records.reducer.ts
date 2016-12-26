@@ -11,9 +11,6 @@ export default function (state: RecordsState = initState, action: Action) {
 		case RecordsActions.LOAD_RECORDS_SUCCESS: {
 			return action.payload;
 		}
-		case RecordsActions.ADD_RECORD_SUCCESS: {
-			return [...state, action.payload];
-		}
 		default: {
 			return state;
 		}

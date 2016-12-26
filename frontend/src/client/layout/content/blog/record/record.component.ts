@@ -14,9 +14,7 @@ export class RecordComponent {
 	@Input() record: Record;
 	
 	constructor(
-		private _router: Router,
-		private _store: Store<AppStore>,
-	  private _recordDetailsActions: RecordDetailsActions
+		private _router: Router
 	) { }
 	
 	openRecord() {

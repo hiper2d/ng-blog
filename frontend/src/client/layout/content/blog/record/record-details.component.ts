@@ -7,6 +7,8 @@ import {Store} from "@ngrx/store";
 import {AppStore} from "../../../../store/app.store";
 import {RecordDetailsActions} from "../../../../store/actions/record-details.action";
 import {CommentsActions} from "../../../../store/actions/comments.actions";
+import {RecordDetailState} from "../../../../store/reduces/record-details.reducer";
+import {RecordCommentsState} from "../../../../store/reduces/comments.reducer";
 
 @Component({
 	selector: '.h2d-record-details',
@@ -25,8 +27,8 @@ export class RecordDetailsComponent implements OnInit {
 		private _recordDetailActions: RecordDetailsActions,
 		private _commentsActions: CommentsActions
 	) {
-		this.comments = _store.select<Array<RecordComment>>('recordComments');
-		this.selectedRecord = _store.select<Record>('recordDetails');
+		this.comments = _store.select<RecordCommentsState>('recordComments');
+		this.selectedRecord = _store.select<RecordDetailState>('recordDetails');
 	}
 	
 	ngOnInit() {

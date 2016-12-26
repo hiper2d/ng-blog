@@ -1,13 +1,19 @@
 <div class="h2d-record-title">{{(selectedRecord | async)?.title}}</div>
 <!--<div>{{(selectedRecord | async)?.date}}</div>-->
-<div class="h2d-record-date">10/12/2016</div>
+<div class="h2d-record-details-date">10/12/2016</div>
 <div class="h2d-record-article" [innerHtml]="(selectedRecord | async)?.content"></div>
 
-<div *ngFor="let comment of comments | async">
-  <p>{{comment.content}}</p>
+<div class="h2d-record-comments">
+  <p>Comments:</p>
+  <div *ngFor="let comment of comments | async" class="h2d-record-comments-content">
+    <p>10/12/2016</p>
+    <p>{{comment.content}}</p>
+  </div>
 </div>
 
-<div *ngIf="selectedRecord | async">
+<div class="h2d-record-comments-add-form">
   <textarea name="newCommentText" [(ngModel)]="newCommentText"></textarea>
-  <button (click)="addComment()">Add comment</button>
+  <div>
+    <button (click)="addComment()">Add comment</button>
+  </div>
 </div>

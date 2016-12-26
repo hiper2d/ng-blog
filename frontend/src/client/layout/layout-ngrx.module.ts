@@ -9,6 +9,7 @@ import {CommentsActions} from "../store/actions/comments.actions";
 import {RecordsEffect} from "../store/effects/records.effect";
 import {EffectsModule} from "@ngrx/effects";
 import {CommentsEffects} from "../store/effects/comments.effects";
+import {NewRecordActions} from "../store/actions/new-record.actions";
 
 @NgModule({
 	imports: [
@@ -31,6 +32,7 @@ import {CommentsEffects} from "../store/effects/comments.effects";
 	],
 	providers: [
 		CommentsActions,
+		NewRecordActions,
 		RecordsActions,
 		RecordDetailsActions
 	]

@@ -1,14 +1,5 @@
-<p>Admin login form</p>
-<p>{{message}}</p>
+<input id="username" class="login-form-input" type="text" placeholder="Username">
+<input id="password" class="login-form-input" type="password" placeholder="Password">
 
-<div *ngIf="!authService.isLoggedIn">
-  <label for="username">Username</label>
-  <input id="username" type="text">
-  <label for="password">Username</label>
-  <input id="password" type="password">
-</div>
-
-<p>
-  <button (click)="login()"  *ngIf="!authService.isLoggedIn">Login</button>
-  <button (click)="logout()" *ngIf="authService.isLoggedIn">Logout</button>
-</p>
+<button class="login-form-button" (click)="login()"  *ngIf="!authService.isLoggedIn">Login</button>
+<button class="login-form-button" (click)="logout()" *ngIf="authService.isLoggedIn">Logout</button>

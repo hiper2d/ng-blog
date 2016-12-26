@@ -3,7 +3,7 @@ import {Observable} from "rxjs";
 import {Store} from "@ngrx/store";
 import {RecordComment} from "../model/comment.model";
 import {AppStore} from "../store/app.store";
-import {Http, Response} from "@angular/http";
+import {Http} from "@angular/http";
 import {RecordCommentsState} from "../store/reduces/comments.reducer";
 
 @Injectable()
@@ -16,14 +16,14 @@ export class CommentService {
 		private _http: Http,
 		private _store: Store<AppStore>,
 	) {
-		this.comments = _store.select<Array<RecordComment>>('recordComments');
+		this.comments = _store.select<RecordCommentsState>('recordComments');
 	}
 	
 	loadComments(recordId: string): Observable<RecordCommentsState> {
 		return this._http.get(CommentService.SPRING_SERVER + "/" + recordId).map(res => <Array<RecordComment>> res.json());
 	}
 	
-	saveComment(comment: RecordComment): Observable<Response> {
+	saveComment(comment: RecordComment): Observable<RecordComment> {
 		return this._http.post(CommentService.SPRING_SERVER, comment).map(res => res.json());
 	}
 }

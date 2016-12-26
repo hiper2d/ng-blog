@@ -14,7 +14,7 @@ class BlogController
     fun getAllRecords(): List<Record> = recordsService.getAllRecordsWithoutContent()
 
     @PostMapping
-    fun saveRecord(@RequestBody record: Record) = recordsService.saveRecord(record)
+    fun saveRecord(@RequestBody record: Record): Record = recordsService.saveRecord(record)
 
     @GetMapping("/{id}")
     fun getRecord(@PathVariable(value = "id") id: String): Record = recordsService.getRecord(id)

@@ -1,18 +1,46 @@
+.h2d-record-comments-add-form {
+  padding-top: 20px;
+
+  textarea {
+    height: 100px;
+    width: 100%;
+  }
+}
+
 .h2d-record-article {
   border-top: 1px solid #ccc;
   margin-top: 14px;
   padding-top: 60px;
 
   p {
-    padding-bottom: 20px;
+    padding-bottom: 30px;
   }
 }
 
-//.h2d-record-article p {
-//  padding-bottom: 20px;
-//}
+.h2d-record-comments-content {
+  margin: 0 auto;
+  padding-top: 20px;
+  width: 95%;
 
-.h2d-record-date { //todo: reuse existing class with the same name
+  p:first-child {
+    color: #aaa;
+    font-size: 10px;
+    line-height: 10px;
+  }
+}
+
+.h2d-record-comments {
+  border-top: 1px solid #ccc;
+  margin-top: 14px;
+  padding-top: 10px;
+
+  p:first-child {
+    color: #aaa;
+  }
+}
+
+.h2d-record-details-date { //todo: reuse existing h2d-record-details class
+  color: #aaa;
   padding-bottom: 10px;
 }
 

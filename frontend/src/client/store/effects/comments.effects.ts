@@ -24,5 +24,5 @@ export class CommentsEffects {
 		.ofType(CommentsActions.ADD_COMMENT)
 		.map<RecordComment>(action => action.payload)
 		.switchMap(comment => this._commentService.saveComment(comment))
-		.map(comment => this._commentsActions.addCommentSuccess(comment))
+		.map(comment => this._commentsActions.addCommentSuccess(comment));
 }

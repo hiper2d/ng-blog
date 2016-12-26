@@ -10,5 +10,5 @@ import org.springframework.stereotype.Service
 @Autowired constructor(val recordRepository: RecordRepository) : RecordsService {
     override fun getAllRecordsWithoutContent(): List<Record> = recordRepository.findAllWithoutContent()
     override fun getRecord(id: String): Record = recordRepository.findById(ObjectId(id))
-    override fun saveRecord(record: Record) = recordRepository.saveRecord(record)
+    override fun saveRecord(record: Record): Record = recordRepository.saveRecord(record)
 }

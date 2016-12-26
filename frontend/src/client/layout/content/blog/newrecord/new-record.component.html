@@ -1,1 +1,5 @@
-Title: <input type="text" [(ngModel)]="title"/>
+<input type="text" class="h2d-new-record-input" [(ngModel)]="title" placeholder="Title"/>
+<textarea class="h2d-new-record-textarea" [(ngModel)]="description" placeholder="Description"></textarea>
+<textarea class="h2d-new-record-textarea" [(ngModel)]="content" placeholder="Content"></textarea>
+
+<button class="h2d-new-record-button" (click)="createNewRecord()">Create</button>

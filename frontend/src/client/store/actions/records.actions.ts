@@ -16,20 +16,4 @@ export class RecordsActions {
 			payload: records
 		}
 	}
-	
-	static ADD_RECORD = '[Records] Add Record';
-	addRecord(record: Record): Action {
-		return {
-			type: RecordsActions.ADD_RECORD,
-			payload: record
-		};
-	}
-	
-	static ADD_RECORD_SUCCESS = '[Records] Add Record Success';
-	addRecordSuccess(record: Record): Action {
-		return {
-			type: RecordsActions.ADD_RECORD_SUCCESS,
-			payload: record
-		};
-	}
 }

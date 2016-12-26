@@ -3,7 +3,7 @@ import {AuthService} from "../../../services/auth.service";
 import {Router} from "@angular/router";
 
 @Component({
-	selector: 'div.h2d-login',
+	selector: '.h2d-login',
 	templateUrl: './login.component.html',
 	styleUrls: ['./login.component.scss']
 })

@@ -18,7 +18,6 @@ export class BlogService {
 	constructor(
 		private _http: Http,
 		private _store: Store<AppStore>,
-	  	private _recordsActions: RecordsActions
 	) {
 		this.records = _store.select<RecordsState>('records');
 	}
@@ -29,5 +28,9 @@ export class BlogService {
 
 	getRecord(recordId: string): Observable<RecordDetailState> {
 		return this._http.get(BlogService.SPRING_SERVER + "/" + recordId).map(res => <Record>res.json());
+	}
+
+	addRecord(record: Record): Observable<RecordDetailState> {
+		return this._http.post(BlogService.SPRING_SERVER, record).map(res => <Record>res.json());
 	}
 }
