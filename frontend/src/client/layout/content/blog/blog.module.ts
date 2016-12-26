@@ -7,6 +7,7 @@ import {CommonModule} from "@angular/common";
 import {RecordDetailsComponent} from "./record/record-details.component";
 import {CommentService} from "../../../services/comment.service";
 import {FormsModule} from "@angular/forms";
+import {NewRecordComponent} from "./newrecord/new-record.component";
 
 @NgModule({
 	imports: [
@@ -16,6 +17,7 @@ import {FormsModule} from "@angular/forms";
 	],
 	declarations: [
 		BlogComponent,
+		NewRecordComponent,
 		RecordComponent,
 		RecordDetailsComponent
 	],

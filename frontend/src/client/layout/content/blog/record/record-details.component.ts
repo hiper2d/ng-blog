@@ -1,4 +1,4 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, OnInit, ViewEncapsulation} from "@angular/core";
 import {ActivatedRoute, Params} from "@angular/router";
 import {Record} from "../../../../model/record.model";
 import {Observable} from "rxjs";
@@ -9,9 +9,10 @@ import {RecordDetailsActions} from "../../../../store/actions/record-details.act
 import {CommentsActions} from "../../../../store/actions/comments.actions";
 
 @Component({
-	selector: 'div.h2d-record-details',
+	selector: '.h2d-record-details',
 	templateUrl: './record-details.component.html',
-	styleUrls: ['./record-details.component.scss']
+	styleUrls: ['./record-details.component.scss'],
+	encapsulation: ViewEncapsulation.None //todo: investigate http://stackoverflow.com/questions/36265026/angular-2-innerhtml-styling
 })
 export class RecordDetailsComponent implements OnInit {
 	selectedRecord: Observable<Record>;
@@ -21,8 +22,8 @@ export class RecordDetailsComponent implements OnInit {
 	constructor(
 		private _activatedRoute: ActivatedRoute,
 		private _store: Store<AppStore>,
-	  	private _recordDetailActions: RecordDetailsActions,
-	  	private _commentsActions: CommentsActions
+		private _recordDetailActions: RecordDetailsActions,
+		private _commentsActions: CommentsActions
 	) {
 		this.comments = _store.select<Array<RecordComment>>('recordComments');
 		this.selectedRecord = _store.select<Record>('recordDetails');
@@ -31,6 +32,7 @@ export class RecordDetailsComponent implements OnInit {
 	ngOnInit() {
 		this._activatedRoute.params
 			.map((params: Params) => params['id'])
+			.filter(id => id)
 			.subscribe(id => {
 				this._store.dispatch(this._recordDetailActions.getRecordDetail(id));
 				this._store.dispatch(this._commentsActions.loadComments(id));

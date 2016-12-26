@@ -1,9 +1,12 @@
 $header-heigh: 70px;
 $global-side-padding: 5%;
 $global-width: 100%;
+$menu-bg-color: #ea4335;
+$menu-text-color: #fbfbfb;
 
 .h2d-header {
-  background: #8bffdf;
+  background: $menu-bg-color;
+  box-shadow: 0px 6px 22px 0px #9d9da5;
   box-sizing: border-box;
   clear: both;
   height: $header-heigh;
@@ -14,6 +17,7 @@ $global-width: 100%;
 }
 
 .h2d-header-left {
+  color: $menu-text-color;
   float: left;
   font-family: 'Roboto Mono',arial,monospace;
 }
@@ -30,11 +34,35 @@ $global-width: 100%;
   width: $global-width;
 }
 
-.h2d-menu-active {
-  color: red;
-}
-
 .h2d-blog {
   display: flex;
   flex-flow: row wrap; /* flex-direction: row; flex-wrap: wrap; */
+}
+
+.h2d-menu-item {
+  border-bottom: 3px solid $menu-bg-color;
+  color: $menu-text-color;
+  display: inline-block;
+  font-weight: bold;
+  height: $header-heigh - 3px;
+  line-height: $header-heigh - 3px;
+  padding: 0 10px;
+  text-decoration: none;
+  text-transform: uppercase;
+  vertical-align: top;
+}
+
+.h2d-menu-item:hover {
+  border-bottom-color: #000;
+  color: #000;
+}
+
+.h2d-menu-active {
+  border-bottom-color: $menu-text-color;
+}
+
+.h2d-record-details {
+  margin: 0 auto;
+  padding: 50px 0;
+  width: 80%;
 }

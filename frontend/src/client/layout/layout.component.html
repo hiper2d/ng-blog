@@ -5,9 +5,9 @@
 
   <div class="h2d-header-right">
     <nav>
-      <a routerLink="/blog" routerLinkActive="h2d-menu-active">Blog</a>
-      <a routerLink="/about" routerLinkActive="h2d-menu-active">About</a>
-      <a *ngIf="authService.isLoggedIn" routerLink="/new" routerLinkActive="h2d-menu-active">New</a>
+      <a routerLink="/blog" class="h2d-menu-item" routerLinkActive="h2d-menu-active">Blog</a>
+      <a routerLink="/about" class="h2d-menu-item" routerLinkActive="h2d-menu-active">About</a>
+      <a *ngIf="authService.isLoggedIn" routerLink="/new" class="h2d-menu-item" routerLinkActive="h2d-menu-active">New</a>
     </nav>
   </div>
 </header>

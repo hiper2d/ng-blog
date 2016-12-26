@@ -1,8 +1,13 @@
-<div *ngIf="selectedRecord | async">{{selectedRecord.title}}</div>
+<div class="h2d-record-title">{{(selectedRecord | async)?.title}}</div>
+<!--<div>{{(selectedRecord | async)?.date}}</div>-->
+<div class="h2d-record-date">10/12/2016</div>
+<div class="h2d-record-article" [innerHtml]="(selectedRecord | async)?.content"></div>
+
 <div *ngFor="let comment of comments | async">
   <p>{{comment.content}}</p>
 </div>
-<div>
+
+<div *ngIf="selectedRecord | async">
   <textarea name="newCommentText" [(ngModel)]="newCommentText"></textarea>
   <button (click)="addComment()">Add comment</button>
 </div>

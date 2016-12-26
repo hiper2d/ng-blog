@@ -9,7 +9,7 @@ import {LayoutNgRxModule} from "./layout-ngrx.module";
 import {AuthService} from "../services/auth.service";
 import {AuthGuard} from "../guards/auth.guard";
 import {LoginComponent} from "./content/login/login.component";
-import {NewRecordComponent} from "./content/admin/newrecord/new-record.component";
+import {NewRecordComponent} from "./content/blog/newrecord/new-record.component";
 
 @NgModule({
 	imports: [
@@ -22,8 +22,7 @@ import {NewRecordComponent} from "./content/admin/newrecord/new-record.component
 	],
 	declarations: [
 		LayoutComponent,
-		LoginComponent,
-		NewRecordComponent
+		LoginComponent
 	],
 	providers: [
 		AuthGuard,
