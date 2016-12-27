@@ -6,7 +6,7 @@ import {AppStore} from "../store/app.store";
 import {Store} from "@ngrx/store";
 import {RecordsState} from "../store/reduces/records.reducer";
 import {RecordsActions} from "../store/actions/records.actions";
-import {RecordDetailState} from "../store/reduces/record-details.reducer";
+import {RecordDetailsState} from "../store/reduces/record-details.reducer";
 
 @Injectable()
 export class BlogService {
@@ -26,11 +26,11 @@ export class BlogService {
 		return this._http.get(BlogService.SPRING_SERVER).map(res => <Array<Record>>res.json());
 	}
 
-	getRecord(recordId: string): Observable<RecordDetailState> {
+	getRecord(recordId: string): Observable<RecordDetailsState> {
 		return this._http.get(BlogService.SPRING_SERVER + "/" + recordId).map(res => <Record>res.json());
 	}
 
-	addRecord(record: Record): Observable<RecordDetailState> {
+	addRecord(record: Record): Observable<RecordDetailsState> {
 		return this._http.post(BlogService.SPRING_SERVER, record).map(res => <Record>res.json());
 	}
 }

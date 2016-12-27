@@ -69,7 +69,7 @@ var result = db.record.insertMany(recordsToInsert);
 result.insertedIds.forEach(function(recordId) {
     db.comment.insertOne({
             recordId: recordId.valueOf(),
-            content: "What a crap",
+            content: "Awesome, thanks",
         	date: ISODate("2019-11-12T00:00:00.000Z")
         }
     );

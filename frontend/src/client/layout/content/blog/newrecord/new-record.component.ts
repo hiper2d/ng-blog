@@ -30,18 +30,19 @@ export class NewRecordComponent {
 	}
 
 	createNewRecord() {
-		let newRecord = new Record (
-			null,
-			this.title,
-			this.description,
-			this.content,
-			null
-		);
+		let newRecord = new Record ({
+			title: this.title,
+			description: this.description,
+			content: this.content
+		});
+
 		this._store.dispatch(this._newRecordActions.newRecord(newRecord));
 		this._addedRecord.subscribe(rec => {
-			console.log(rec);
-			this._store.dispatch(this._recordsActions.loadRecords());
-			this._router.navigate(['/record', rec.id]);
+			if (rec.id) { // todo: read how to ignore the initial store state, start from here http://stackoverflow.com/questions/33749759/read-stores-initial-state-in-redux-reducer/33791942#33791942
+				console.log(rec);
+				this._store.dispatch(this._recordsActions.loadRecords());
+				this._router.navigate(['/record', rec.id]);
+			}
 		});
 	}
 }

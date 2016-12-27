@@ -2,17 +2,17 @@ import {compose} from "@ngrx/core/compose";
 import {combineReducers} from "@ngrx/store";
 import recordsReducer, {RecordsState} from "./reduces/records.reducer";
 import recordCommentsReducer, {RecordCommentsState} from "./reduces/comments.reducer";
-import recordDetailReducer, {RecordDetailState} from "./reduces/record-details.reducer";
+import recordDetailReducer, {RecordDetailsState} from "./reduces/record-details.reducer";
 import newRecordReducer, {NewRecordState} from "./reduces/new-record.reducer";
 
 export interface AppStore {
 	records: RecordsState,
 	newRecordState: NewRecordState,
-	recordDetails: RecordDetailState,
+	recordDetails: RecordDetailsState,
 	recordComments: RecordCommentsState
 }
 
-export default compose(combineReducers) ({ // does it make sense?
+export default compose(combineReducers) ({ // todo: does it make sense?
 	records: recordsReducer,
 	newRecord: newRecordReducer,
 	recordDetails: recordDetailReducer,

@@ -1,7 +1,7 @@
 <div class="h2d-record-title">{{(selectedRecord | async)?.title}}</div>
 <!--<div>{{(selectedRecord | async)?.date}}</div>-->
 <div class="h2d-record-details-date">10/12/2016</div>
-<div class="h2d-record-article" [innerHtml]="(selectedRecord | async)?.content"></div>
+<div class="h2d-record-article" #article></div>
 
 <div class="h2d-record-comments">
   <p>Comments:</p>
