@@ -9,7 +9,7 @@ export class CommentsEffects {
 	constructor(
 		private _actions: Actions,
 		private _commentsActions: CommentsActions,
-	  private _commentService: CommentService
+	  	private _commentService: CommentService
 	) {}
 	
 	@Effect()
@@ -22,7 +22,7 @@ export class CommentsEffects {
 	@Effect()
 	saveComment = this._actions
 		.ofType(CommentsActions.ADD_COMMENT)
-		.map<RecordComment>(action => action.payload)
+		.map(action => action.payload)
 		.switchMap(comment => this._commentService.saveComment(comment))
 		.map(comment => this._commentsActions.addCommentSuccess(comment));
 }

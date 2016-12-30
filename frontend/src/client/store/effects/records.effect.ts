@@ -19,7 +19,7 @@ export class RecordsEffect {
 	@Effect()
 	newRecord = this._actions
         .ofType(NewRecordActions.NEW_RECORD)
-        .map<Record>(action => action.payload)
+        .map(action => action.payload)
         .switchMap(rec => this._blogService.addRecord(rec))
         .map(rec => this._newRecordActions.newRecordSuccess(rec));
 	
@@ -32,7 +32,7 @@ export class RecordsEffect {
 	@Effect()
 	getRecordDetail = this._actions
 		.ofType(RecordDetailsActions.GET_RECORD_DETAILS)
-		.map<string>(action => action.payload)
+		.map(action => action.payload)
 		.switchMap(id => this._blogService.getRecord(id))
 		.map(record => this._recordDetailActions.getRecordDetailSuccess(record));
 }
