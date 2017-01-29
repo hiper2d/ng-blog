@@ -33,17 +33,12 @@ module.exports = {
             {
                 test: /\.scss$/,
                 include: helpers.root('src', 'client'),
-                loaders: ['raw-loader', 'sass-loader']
+                loader: 'raw!sass'
             },
             {
                 test: /\.css$/,
                 include: helpers.root('src', 'public'),
-                loader: 'raw'
-            },
-            {
-                test: /\.css$/,
-                include: helpers.root('src', 'public'),
-                loader: ExtractTextPlugin.extract('style!css', 'css?sourceMap')
+                loader: ExtractTextPlugin.extract('style', 'css?sourceMap')
             }
         ]
     },
