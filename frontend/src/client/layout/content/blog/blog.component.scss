@@ -1,14 +1,4 @@
-.h2d-record {
-  padding: 5%;
-  flex-basis: 100%;
-  max-width: 100%;
-  box-sizing: border-box;
-  border-bottom: 1px solid #ccc;
-}
-
-@media all and (min-width: 1000px) {
-  .h2d-record {
-    flex-basis: 50%;
-    max-width: 50%;
-  }
+:host {
+  display: flex;
+  flex-flow: row wrap; /* flex-direction: row; flex-wrap: wrap; */
 }

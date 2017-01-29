@@ -6,7 +6,7 @@ import {RecordsActions} from "../../../store/actions/records.actions";
 import {RecordsState} from "../../../store/reduces/records.reducer";
 
 @Component({
-	selector: 'div.h2d-blog',
+	selector: '.h2d-blog',
 	templateUrl: './blog.component.html',
 	styleUrls: ['./blog.component.scss']
 })

@@ -6,7 +6,7 @@ import {AppStore} from "../../../../store/app.store";
 import {RecordDetailsActions} from "../../../../store/actions/record-details.action";
 
 @Component({
-	selector: 'div.h2d-record',
+	selector: '.h2d-record',
 	templateUrl: './record.component.html',
 	styleUrls: ['./record.component.scss']
 })

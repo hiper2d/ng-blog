@@ -1,3 +1,13 @@
+@import "../../../vars";
+
+:host {
+  left: 50%;
+  margin: -$header-heigh 0 0 -144px;
+  position: absolute;
+  top: 50%;
+  width: 20%;
+}
+
 .login-form-button {
   background-color: #636262;
   border: none;

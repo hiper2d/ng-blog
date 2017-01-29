@@ -13,8 +13,8 @@ import {RecordCommentsState} from "../../../../store/reduces/comments.reducer";
 @Component({
 	selector: '.h2d-record-details',
 	templateUrl: './record-details.component.html',
-	styleUrls: ['./record-details.component.scss'],
-	encapsulation: ViewEncapsulation.None //todo: try to avoid this, start reading from here http://stackoverflow.com/questions/36265026/angular-2-innerhtml-styling
+	styleUrls: ['./record-details.component.scss']
+	// encapsulation: ViewEncapsulation.None //todo: try to avoid this, start reading from here http://stackoverflow.com/questions/36265026/angular-2-innerhtml-styling
 })
 export class RecordDetailsComponent implements OnInit, OnDestroy {
 	@ViewChild('article')
@@ -48,8 +48,7 @@ export class RecordDetailsComponent implements OnInit, OnDestroy {
 			})
 		);
 		this._subscriptions.push(
-			this.selectedRecord.subscribe(rec => {
-				console.log("recordDetails"); //todo: called twice, why?
+			this.selectedRecord.subscribe(rec => { //todo: called twice coz the initial state, need to get rif of it
 				this.articleContainer.nativeElement.innerHTML = rec.content; //todo: is it ok to use nativeElement?
 			})
 		);

@@ -1,8 +1,4 @@
-$header-heigh: 70px;
-$global-side-padding: 5%;
-$global-width: 100%;
-$menu-bg-color: #ea4335;
-$menu-text-color: #fbfbfb;
+@import "../vars";
 
 .h2d-header {
   background: $menu-bg-color;
@@ -34,11 +30,6 @@ $menu-text-color: #fbfbfb;
   width: $global-width;
 }
 
-.h2d-blog {
-  display: flex;
-  flex-flow: row wrap; /* flex-direction: row; flex-wrap: wrap; */
-}
-
 .h2d-menu-item {
   border-bottom: 3px solid $menu-bg-color;
   color: $menu-text-color;
@@ -59,24 +50,4 @@ $menu-text-color: #fbfbfb;
 
 .h2d-menu-active {
   border-bottom-color: $menu-text-color;
-}
-
-.h2d-record-details {
-  margin: 0 auto;
-  padding: 50px 0;
-  width: 80%;
-}
-
-.h2d-login {
-  left: 50%;
-  margin: -$header-heigh 0 0 -144px;
-  position: absolute;
-  top: 50%;
-  width: 20%;
-}
-
-.h2d-new-record {
-  margin: 0 auto;
-  padding-top: 30px;
-  width: 80%;
 }

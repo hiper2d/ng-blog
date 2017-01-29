@@ -1,3 +1,18 @@
+:host {
+  padding: 5%;
+  flex-basis: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  border-bottom: 1px solid #ccc;
+}
+
+@media all and (min-width: 1000px) {
+  :host {
+    flex-basis: 50%;
+    max-width: 50%;
+  }
+}
+
 .h2d-record-date {
   color: #aaa;
   padding-bottom: 10px;
