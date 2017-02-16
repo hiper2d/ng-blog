@@ -1,11 +1,15 @@
 @import "../../../vars";
 
+$element-height: 34px;
+$element-margin-bottom: 16px;
+$element-width: 400px;
+
 :host {
   left: 50%;
-  margin: -$header-heigh 0 0 -144px;
+  margin: (-($element-height*3 + $element-margin-bottom*2)/2) 0 0 (-$element-width/2);
   position: absolute;
   top: 50%;
-  width: 20%;
+  width: $element-width;
 }
 
 .login-form-button {
@@ -13,8 +17,8 @@
   border: none;
   color: #fff;
   font-size: 14px;
-  height: 34px;
-  line-height: 34px;
+  height: $element-height;
+  line-height: $element-height;
   width: 100%;
 }
 
@@ -22,9 +26,9 @@
   box-sizing: border-box;
   display: inline-block;
   font-size: 14px;
-  height: 34px;
-  line-height: 34px;
-  margin-bottom: 16px;
+  height: $element-height;
+  line-height: $element-height;
+  margin-bottom: $element-margin-bottom;
   padding: 0 10px;
   width: 100%;
 }

@@ -5,8 +5,8 @@
   box-shadow: 0px 6px 22px 0px #9d9da5;
   box-sizing: border-box;
   clear: both;
-  height: $header-heigh;
-  line-height: $header-heigh;
+  height: $header-height;
+  line-height: $header-height;
   padding: 0 $global-side-padding;
   position: fixed;
   width: 100%;
@@ -20,13 +20,13 @@
 
 .h2d-header-right {
   float: right;
-  font-family: 300 16px/$header-heigh Roboto,arial,sans-serif;
+  font-family: 300 16px/$header-height Roboto,arial,sans-serif;
 }
 
 .h2d-content {
   margin: 0 auto;
   box-sizing: border-box;
-  padding-top: $header-heigh;
+  padding-top: $header-height;
   width: $global-width;
 }
 
@@ -35,8 +35,8 @@
   color: $menu-text-color;
   display: inline-block;
   font-weight: bold;
-  height: $header-heigh - 3px;
-  line-height: $header-heigh - 3px;
+  height: $header-height - 3px;
+  line-height: $header-height - 3px;
   padding: 0 10px;
   text-decoration: none;
   text-transform: uppercase;
