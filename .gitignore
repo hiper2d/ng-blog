@@ -7,6 +7,8 @@
 /npm-debug.log
 /server/build/
 /server/.gradle/
+gradlew
+gradlew.bat
 *.log
 *.ipr
 *.iml
