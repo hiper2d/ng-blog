@@ -1,6 +1,4 @@
 /.idea/
-/.gradle/
-/gradle/
 /frontend/node_modules/
 /frontend/dist/
 /build/
