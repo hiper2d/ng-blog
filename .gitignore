@@ -5,6 +5,7 @@
 /npm-debug.log
 /server/build/
 /server/.gradle/
+/server/gradle/
 gradlew
 gradlew.bat
 *.log
