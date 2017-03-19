@@ -2,10 +2,10 @@
 /frontend/node_modules/
 /frontend/dist/
 /build/
-/npm-debug.log
 /server/build/
 /server/.gradle/
 /server/gradle/
+npm-debug.log
 gradlew
 gradlew.bat
 *.log

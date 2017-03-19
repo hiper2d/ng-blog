@@ -1,10 +1,12 @@
 var webpack = require('webpack');
+var helpers = require('./helpers');
+var CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
+var ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var helpers = require('./helpers');
 
 module.exports = {
-    devtool: 'source-map',
+    devtool: 'cheap-module-eval-source-map',
 
     entry: {
         'polyfills': './src/client/polyfills.ts',
@@ -13,38 +15,59 @@ module.exports = {
     },
 
     resolve: {
-        extensions: ['', '.js', '.ts']
+        extensions: ['.js', '.ts', '.scss'],
+        modules: [
+            helpers.root('src'),
+            helpers.root('node_modules')
+        ]
     },
 
     module: {
-        loaders: [
+        rules: [
             {
                 test: /\.ts$/,
-                loaders: ['awesome-typescript-loader', 'angular2-template-loader']
+                loaders: [
+                    {
+                        loader: 'awesome-typescript-loader',
+                        options: {configFileName: helpers.root('tsconfig.json')}
+                    }, 'angular2-template-loader'
+                ]
             },
             {
                 test: /\.html$/,
-                loader: 'html'
+                loader: 'html-loader'
             },
             {
-                test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot)$/,
-                loader: 'file?name=assets/[name].[hash].[ext]'
-            },
-            {
-                test: /\.scss$/,
+                test: /\.scss$/, //compiling loading component styles in stylesUrls
                 include: helpers.root('src', 'client'),
-                loader: 'raw!sass'
+                loader: 'to-string-loader!css-loader!sass-loader'
             },
             {
-                test: /\.css$/,
+                test: /\.scss$/, //compiling and loading global styles
                 include: helpers.root('src', 'public'),
-                loader: ExtractTextPlugin.extract('style', 'css?sourceMap')
+                loader: 'css-loader!sass-loader'
+            },
+            {
+                test: /\.css$/, //loading global styles
+                include: helpers.root('src', 'public'),
+                loader: ExtractTextPlugin.extract({
+                    fallbackLoader: 'style-loader',
+                    loader: 'css-loader?sourceMap'
+                })
             }
         ]
     },
 
     plugins: [
-        new webpack.optimize.CommonsChunkPlugin({
+        // Workaround for angular/angular#11580
+        new ContextReplacementPlugin(
+            // The (\\|\/) piece accounts for path separators in *nix and Windows
+            /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
+            helpers.root('src'), // location of your src
+            {} // a map of your routes
+        ),
+
+        new CommonsChunkPlugin({
             name: ['boot', 'vendors', 'polyfills']
         }),
 
