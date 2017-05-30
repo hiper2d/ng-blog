@@ -9,15 +9,15 @@ module.exports = {
     devtool: 'cheap-module-eval-source-map',
 
     entry: {
-        'polyfills': './src/client/polyfills.ts',
-        'vendors': './src/client/vendors.ts',
-        'boot': './src/client/boot.ts'
+        'polyfills': './client/polyfills.ts',
+        'vendors': './client/vendors.ts',
+        'boot': './client/boot.ts'
     },
 
     resolve: {
         extensions: ['.js', '.ts', '.scss'],
         modules: [
-            helpers.root('src'),
+            helpers.root('.'),
             helpers.root('node_modules')
         ]
     },
@@ -39,17 +39,17 @@ module.exports = {
             },
             {
                 test: /\.scss$/, //compiling loading component styles in stylesUrls
-                include: helpers.root('src', 'client'),
+                include: helpers.root('client'),
                 loader: 'to-string-loader!css-loader!sass-loader'
             },
             {
                 test: /\.scss$/, //compiling and loading global styles
-                include: helpers.root('src', 'public'),
+                include: helpers.root('public'),
                 loader: 'css-loader!sass-loader'
             },
             {
                 test: /\.css$/, //loading global styles
-                include: helpers.root('src', 'public'),
+                include: helpers.root('public'),
                 loader: ExtractTextPlugin.extract({
                     fallbackLoader: 'style-loader',
                     loader: 'css-loader?sourceMap'
@@ -72,8 +72,8 @@ module.exports = {
         }),
 
         new HtmlWebpackPlugin({
-            template: 'src/public/index.html',
-            favicon: 'src/public/assets/images/favicon.ico'
+            template: 'public/index.html',
+            favicon: 'public/assets/images/favicon.ico'
         })
     ]
 };

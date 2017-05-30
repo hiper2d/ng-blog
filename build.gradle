@@ -1,6 +1,52 @@
 group 'com.hiper2d'
 version '1.0-SNAPSHOT'
 
+apply plugin: 'base'
+
+// Apply common repositories, plugins, dependencies to all modules
+subprojects {
+    repositories {
+        mavenCentral()
+    }
+
+    apply plugin: 'base'
+}
+
+//Recursively calls clean task in all modules
+clean {
+    delete 'dist'
+    subprojects.each {
+        it.afterEvaluate {
+            def cleanTask = it.tasks.findByName('clean')
+            if (cleanTask) {
+                dependsOn(cleanTask)
+            }
+        }
+    }
+}
+
+//Recursively removes logs directories
+task cleanLogs(type: Delete) {
+    def files = new HashSet()
+    new File("$projectDir").eachDirRecurse { file ->
+        if (file.isDirectory() && (file.name == 'logs')) {
+            files << file
+        }
+    }
+    delete files
+}
+
+//Recursively removes all temporary directories
+task cleanAll(type: Delete) {
+    def files = new HashSet()
+    new File("$projectDir").eachDirRecurse { file ->
+        if (file.isDirectory() && (file.name in ['.idea', '.gradle', 'build', 'gradle', 'dist', 'logs'])) {
+            files << file
+        }
+    }
+    delete files
+}
+
 task wrapper(type: Wrapper) {
-    gradleVersion = '3.1'
+    gradleVersion = '3.4.1'
 }

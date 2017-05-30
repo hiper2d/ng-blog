@@ -8,7 +8,7 @@ import {RecordCommentsState} from "../store/reduces/comments.reducer";
 
 @Injectable()
 export class CommentService {
-	static SPRING_SERVER = "http://localhost:9001/api/comment";
+	static SPRING_SERVER = "http://localhost:9001/ng-blog/api/comment";
 	
 	comments: Observable<Array<RecordComment>>;
 	

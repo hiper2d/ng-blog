@@ -5,7 +5,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.context.annotation.Bean
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder
 import com.fasterxml.jackson.module.kotlin.*
+import org.springframework.web.servlet.config.annotation.EnableWebMvc
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry
 
+
+
+@EnableWebMvc
 @SpringBootApplication
 open class Application {
     @Bean open fun objectMapperBuilder(): Jackson2ObjectMapperBuilder = Jackson2ObjectMapperBuilder().modulesToInstall(KotlinModule())

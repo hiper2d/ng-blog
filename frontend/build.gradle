@@ -1,28 +1,38 @@
 plugins {
-  id "com.moowork.node" version "0.13"
+    id "com.moowork.node" version "0.13"
 }
 
 group 'com.hiper2d'
 version '1.0-SNAPSHOT'
 
+apply plugin: 'java'
+
 node {
-  version = '6.7.0'
-  npmVersion = '3.10.8'
+    version = '6.7.0'
+    npmVersion = '3.10.8'
 
-  // If true, it will download node using above parameters
-  // If false, it will try to use globally installed node
-  download = false
+    // If true, it will download node using above parameters
+    // If false, it will try to use globally installed node
+    download = false
 
-  // Set the work directory for unpacking node
-  workDir = file("${project.buildDir}/nodejs")
+    // Set the work directory for unpacking node
+    workDir = file("${project.buildDir}/src/main/static")
 
-  // Set the work directory where node_modules should be located
-  nodeModulesDir = file("${project.projectDir}")
+    // Set the work directory where node_modules should be located
+    nodeModulesDir = file("${project.projectDir}/src/main/static")
 }
 
-task liteRun(type: NpmTask) {
-  args = ['start']
+jar {
+    into('META-INF/resources') {
+        from 'src/main/static/dist'
+    }
+
+    manifest {
+        attributes(
+                "Manifest-Version": "1.0"
+        )
+    }
 }
 
-task runAll {}
-runAll.dependsOn(liteRun)
+jar.dependsOn(npm_install)
+jar.dependsOn(npm_run_build)
