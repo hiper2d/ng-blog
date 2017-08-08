@@ -1,5 +1,5 @@
 plugins {
-    id "com.moowork.node" version "0.13"
+    id "com.moowork.node" version "1.2.0"
 }
 
 group 'com.hiper2d'
@@ -22,6 +22,10 @@ node {
     nodeModulesDir = file("${project.projectDir}/src/main/static")
 }
 
+clean {
+    delete 'src/main/static/dist'
+}
+
 jar {
     into('META-INF/resources') {
         from 'src/main/static/dist'
@@ -34,5 +38,8 @@ jar {
     }
 }
 
-jar.dependsOn(npm_install)
-jar.dependsOn(npm_run_build)
+task npm_build(type: NpmTask) {
+    args = ['run', 'build']
+}
+
+processResources.dependsOn(npm_build)

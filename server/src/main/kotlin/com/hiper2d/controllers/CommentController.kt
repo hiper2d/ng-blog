@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/api/comment")
-@CrossOrigin(origins = arrayOf("http://localhost:3001"))
 class CommentController
 @Autowired constructor(val commentService: CommentService) {
     @GetMapping("/{recordId}")

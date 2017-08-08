@@ -40,19 +40,28 @@ module.exports = {
             {
                 test: /\.scss$/, //compiling loading component styles in stylesUrls
                 include: helpers.root('client'),
-                loader: 'to-string-loader!css-loader!sass-loader'
+                use: [{
+                    loader: "to-string-loader" // creates style nodes from JS strings
+                }, {
+                    loader: "css-loader" // translates CSS into CommonJS
+                }, {
+                    loader: "sass-loader" // compiles Sass to CSS
+                }]
             },
             {
-                test: /\.scss$/, //compiling and loading global styles
-                include: helpers.root('public'),
-                loader: 'css-loader!sass-loader'
+                test: /\.scss$/, //compiling and loading global *.scss styles
+                include: helpers.root('public', 'assets'),
+                loader: ExtractTextPlugin.extract({ //move to a separate .css output
+                    fallback: 'style-loader',
+                    use: ['to-string-loader', 'css-loader?sourceMap', 'sass-loader?sourceMap']
+                })
             },
             {
                 test: /\.css$/, //loading global styles
                 include: helpers.root('public'),
                 loader: ExtractTextPlugin.extract({
-                    fallbackLoader: 'style-loader',
-                    loader: 'css-loader?sourceMap'
+                    fallback: 'style-loader',
+                    use: ['to-string-loader', 'css-loader']
                 })
             }
         ]

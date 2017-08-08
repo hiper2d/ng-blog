@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/api/blog")
-@CrossOrigin(origins = arrayOf("http://localhost:3001", "chrome-extension://cokgbflfommojglbmbpenpphppikmonn")) // read about CORS and Chrome Console
 class BlogController
 @Autowired constructor(val recordsService: RecordsService) {
     @GetMapping
